@@ -1,14 +1,20 @@
 import React from 'react'
+import productosArray from "../assets/productos.json"
+import { Link } from 'react-router-dom'
 
 const Productos = () => {
-    let productosArray = [
-        {id: 1, nombre: "Big mac", precio: "$5000" , img: "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kqX3vl0y/200/200/original?country=ar", categoria: "hamburguesa" },
-        {id: 2, nombre: "Mac fiesta", precio: "$4050" , img: "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kqXakvb9/200/200/original?country=ar", categoria: "hamburguesa" },
-        {id: 3, nombre: "papas", precio: "$3500" , img: "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kcXXQgnB/200/200/original?country=ar", categoria: "papas" },
-    ]
+    
   return (
     <div>
-       
+       <h1>Productos</h1>
+       {productosArray.map(producto => (<div className="card"  key={producto.id}>
+            <img src={producto.img} className="card-img-top" alt="..."/>
+            <div className="card-body">
+              <h5 className="card-title">{producto.nombre}</h5>
+              <p className="card-text">{producto.precio}</p>
+              <Link to={"/productos/"+producto.id} className="btn btn-primary">Ver mas</Link>
+            </div>
+          </div>))}
     </div>
   )
 }
